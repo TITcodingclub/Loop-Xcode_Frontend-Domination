@@ -1,12 +1,14 @@
 import { Navbar } from "@/components/navbar";
 import Image from "next/image";
 
+import { Hero } from "@/components/Herosection";
 export default function Home() {
   return (
     
     <div>
-      {/* <h1 className="text-4xl font-bold">hello world</h1> */}
-      <Navbar />
+      {/* <Navbar /> */}
+      <Hero />
+      
     </div>
   );
 }
