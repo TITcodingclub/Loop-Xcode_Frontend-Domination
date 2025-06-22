@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "./theme-toggle";
 import {
   Search,
@@ -14,8 +13,8 @@ import {
   BookOpen,
   User,
   Plus,
-  Bell,
 } from "lucide-react";
+import router from "next/router";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,10 +58,12 @@ export function Navbar() {
               <Plus className="h-4 w-4" />
               Create Recipe
             </Button>
-            <Button variant="ghost" size="sm" className="gap-2">
-              <BookOpen className="h-4 w-4" />
-              My Recipes
-            </Button>
+            <Link href="/recipe">
+              <Button variant="ghost" size="sm" className="gap-2" >
+                <BookOpen className="h-4 w-4" />
+                All Recipes
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm" className="gap-2">
               <Heart className="h-4 w-4" />
               Favorites
@@ -118,10 +119,12 @@ export function Navbar() {
                   <Plus className="h-4 w-4" />
                   Create Recipe
                 </Button>
-                <Button variant="ghost" className="w-full justify-start gap-2">
-                  <BookOpen className="h-4 w-4" />
-                  My Recipes
-                </Button>
+                <Link href="/recipe">
+                  <Button variant="ghost" className="w-full justify-start gap-2">
+                    <BookOpen className="h-4 w-4" />
+                    All Recipes
+                  </Button>
+                </Link>
                 <Button variant="ghost" className="w-full justify-start gap-2">
                   <Heart className="h-4 w-4" />
                   Favorites

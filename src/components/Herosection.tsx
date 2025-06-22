@@ -6,7 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Search, TrendingUp } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-
+import { mockRecipes } from '@/lib/mockData';
+import { RecipeCard } from '@/components/RecipeCard';
+import Link from "next/link";
 export function Hero() {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -121,9 +123,49 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <Separator />
-    </section>
+      <div className='my-5'><Separator /></div>
 
+      {/* recipie started */}
+
+     <section className="py-12 mx-5 lg:mx-25">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-2">Latest Recipes</h2>
+              <p className="text-muted-foreground">{mockRecipes.length} recipes found</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {mockRecipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href={"/recipe"}
+            >
+              <Button variant="outline" size="lg" className="gap-2">
+              View all Recipe
+              
+            </Button>
+            </Link>
+            
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+      
+    </section>
+    
+    
     
   );
 }
